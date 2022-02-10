@@ -2,7 +2,7 @@
 Zermond Platform repository
 
 
-## Выполнено ДЗ № 1 (kubernetes-prepare)
+# Выполнено ДЗ № 1 (kubernetes-prepare)
 
 Разберитесь почему все pod в namespace kube-system восстановились после удаления. Укажите причину в описании PR
 
