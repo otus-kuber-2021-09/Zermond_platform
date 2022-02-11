@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hipster-frontend
+  labels:
+    version: v1.0.0
+    app: hipster-frontend
+spec:
+  containers:
+    - name: hipster-frontend
+      image: zermond/hipster-frontend:latest
+      env:
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "PRODUCTSERVICE:4444"
+        - name: CURRENCY_SERVICE_ADDR
+          value: "CURRSERVICE:4444"
+        - name: CART_SERVICE_ADDR
+          value: "CARTSERVICE:4444"
+        - name: RECOMMENDATION_SERVICE_ADDR
+          value: "recommendationservice:8080"
+        - name: SHIPPING_SERVICE_ADDR
+          value: "shippingservice:50051"
+        - name: CHECKOUT_SERVICE_ADDR
+          value: "checkoutservice:5050"
+        - name: AD_SERVICE_ADDR
+          value: "adservice:9555"

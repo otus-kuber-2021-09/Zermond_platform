@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-otus
+  labels:
+    version: v1.0.0
+    app: web-otus
+spec:
+  containers:
+    - name: web-otus
+      image: zermond/web-otus:latest
+      volumeMounts:
+        - name: app
+          mountPath: /app
+  initContainers:
+    - name: init-web-otus
+      image: busybox:1.31.0
+      command: ['sh', '-c', 'wget -O- https://tinyurl.com/otus-k8s-intro | sh']
+      volumeMounts:
+        - name: app
+          mountPath: /app
+  volumes:
+    - name: app
+      emptyDir: {}
+
