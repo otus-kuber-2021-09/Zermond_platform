@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hipster-frontend
+  name: frontend
   labels:
     version: v1.0.0
-    app: hipster-frontend
+    app: frontend
 spec:
   containers:
-    - name: hipster-frontend
+    - name: frontend
       image: zermond/hipster-frontend:latest
       env:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
