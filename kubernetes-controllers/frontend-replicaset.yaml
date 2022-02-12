@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+    tier: frontend
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: frontend
+        tier: frontend
+    spec:
+      containers:
+      - name: server
+        image: zermond/hipster-frontend:v0.0.2
+        env:
+          - name: PRODUCT_CATALOG_SERVICE_ADDR
+            value: "PRODUCTSERVICE:4444"
+          - name: CURRENCY_SERVICE_ADDR
+            value: "CURRSERVICE:4444"
+          - name: CART_SERVICE_ADDR
+            value: "CARTSERVICE:4444"
+          - name: RECOMMENDATION_SERVICE_ADDR
+            value: "recommendationservice:8080"
+          - name: SHIPPING_SERVICE_ADDR
+            value: "shippingservice:50051"
+          - name: CHECKOUT_SERVICE_ADDR
+            value: "checkoutservice:5050"
+          - name: AD_SERVICE_ADDR
+            value: "adservice:9555"
+  selector:
+    matchLabels:
+      tier: frontend
